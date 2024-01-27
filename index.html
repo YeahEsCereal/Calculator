@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div id="center">
+      <div id="calculator">
+        <div id="calculationdiv">
+          <input type="text" readonly id="calculation" />
+          <p id="smallCal"></p>
+        </div>
+        <div id="buttons">
+          <div id="row">
+            <button onclick="addToCalculation('1')">1</button>
+            <button onclick="addToCalculation('2')">2</button>
+            <button onclick="addToCalculation('3')">3</button>
+            <button onclick="addToCalculation('+')" id="operation">+</button>
+          </div>
+          <div id="row">
+            <button onclick="addToCalculation('4')">4</button>
+            <button onclick="addToCalculation('5')">5</button>
+            <button onclick="addToCalculation('6')">6</button>
+            <button onclick="addToCalculation('-')" id="operation">-</button>
+          </div>
+          <div id="row">
+            <button onclick="addToCalculation('7')">7</button>
+            <button onclick="addToCalculation('8')">8</button>
+            <button onclick="addToCalculation('9')">9</button>
+            <button onclick="addToCalculation('x')" id="operation">x</button>
+          </div>
+          <div id="row">
+            <button onclick="addToCalculation('&#40;')">&#40;</button>
+            <button onclick="addToCalculation('0')">0</button>
+            <button onclick="addToCalculation('&#41;')">&#41;</button>
+            <button onclick="addToCalculation('÷')" id="operation">÷</button>
+          </div>
+          <div id="row">
+            <button onclick="evaluateCalculation()" id="equals">=</button>
+            <button onclick="clearCalculation()">C</button>
+            <button onclick="addToCalculation('.')">.</button>
+            <button onclick="addToCalculation('^')" id="operation">^</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
