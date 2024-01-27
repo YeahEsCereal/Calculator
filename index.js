@@ -11,7 +11,7 @@ function addToCalculation(number) {
     if (number == '&#41;') {
         number = ')';
     }
-    if (number == '+' || number == '-' || number == 'x' || number == '÷' || number == '^' || number == ')') {
+    if (number == '+' || number == '-' || number == 'x' || number == '÷' || number == '^') {
         smallCal.innerHTML += calculation.value + number;
         calculation.value = '';
         return;
