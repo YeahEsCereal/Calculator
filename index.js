@@ -16,10 +16,6 @@ function addToCalculation(number) {
         calculation.value = '';
         return;
     }
-    if (smallCal.innerHTML !== '' && calculation.value === '') {
-        calculation.value = number;
-        return;
-    }
     calculation.value += number;
 }
 
@@ -31,7 +27,7 @@ function clearCalculation() {
 function evaluateCalculation() {
     calculation.value = smallCal.innerHTML + calculation.value;
     const splitCal = calculation.value.split('');
-    if (splitCal === '') {
+    if (calculation.value === '') {
         return;
     }
     const characters = splitCal.map(char => {
@@ -56,7 +52,8 @@ function evaluateCalculation() {
         const expression = eval(finalCal);
         calculation.value = expression;
         smallCal.innerHTML = '';
-        if (expression === 'Infinity') {
+        if (expression == 'Infinity') {
+            alert('a')
             calculation.value = 'Error';
             smallCal.innerHTML = '';
         }
