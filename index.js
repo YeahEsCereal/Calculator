@@ -1,26 +1,26 @@
 const calculation = document.getElementById('calculation');
-const smallCal = document.getElementById('smallCal')
+const smallCal = document.getElementById('smallCal');
 
 function addToCalculation(number) {
-    if (calculation.value == 'Error') {
+    if (calculation.value === 'Error') {
         calculation.value = '';
     }
-    if (number == '&#40;') {
+    if (number === '&#40;') {
         number = '(';
     }
-    if (number == '&#41;') {
+    if (number === '&#41;') {
         number = ')';
     }
-    if (number == '+' || number == '-' || number == 'x' || number == '÷' || number == '^') {
+    if (['+', '-', 'x', '÷', '^', ')'].includes(number)) {
         smallCal.innerHTML += calculation.value + number;
         calculation.value = '';
         return;
     }
-    if (smallCal.innerHTML != '' && calculation.value == '') {
+    if (smallCal.innerHTML !== '' && calculation.value === '') {
         calculation.value = number;
         return;
     }
-    calculation.value += number
+    calculation.value += number;
 }
 
 function clearCalculation() {
@@ -29,38 +29,34 @@ function clearCalculation() {
 }
 
 function evaluateCalculation() {
-    let characters = [];
     calculation.value = smallCal.innerHTML + calculation.value;
     const splitCal = calculation.value.split('');
-    if (splitCal == '') {
+    if (splitCal === '') {
         return;
     }
-    for (let i = 0; i <= splitCal.length; i++) {
-        char = splitCal[i];
-        switch (splitCal[i]) {
+    const characters = splitCal.map(char => {
+        switch (char) {
             case 'x':
-                char = '*';
-                break;
+                return '*';
             case '÷':
-                char = '/';
-                break;
+                return '/';
             case '^':
-                char = '**';
-                break;
+                return '**';
+            default:
+                return char;
         }
-        if (splitCal[i] == '*' && splitCal[i + 1] == '*') {
-            calculation.value = 'Error';
-            smallCal.innerHTML = '';
-            return;
-        }
-        characters.push(char);
+    });
+    if (splitCal.includes('**')) {
+        calculation.value = 'Error';
+        smallCal.innerHTML = '';
+        return;
     }
     const finalCal = characters.join('');
     try {
-        const expression = eval(finalCal)
+        const expression = eval(finalCal);
         calculation.value = expression;
         smallCal.innerHTML = '';
-        if (expression == 'Infinity') {
+        if (expression === 'Infinity') {
             calculation.value = 'Error';
             smallCal.innerHTML = '';
         }
