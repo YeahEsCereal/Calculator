@@ -53,7 +53,6 @@ function evaluateCalculation() {
         calculation.value = expression;
         smallCal.innerHTML = '';
         if (expression == 'Infinity') {
-            alert('a')
             calculation.value = 'Error';
             smallCal.innerHTML = '';
         }
