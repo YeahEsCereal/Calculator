@@ -52,8 +52,12 @@ function evaluateCalculation() {
         const expression = eval(finalCal);
         calculation.value = expression;
         smallCal.innerHTML = '';
-        if (expression == 'Infinity') {
+        if (expression == '-Infinity' || expression == 'NaN') {
             calculation.value = 'Error';
+            smallCal.innerHTML = '';
+        }
+        if (expression == 'Infinity') {
+            calculation.value = 'Error/Too Big;
             smallCal.innerHTML = '';
         }
     } catch {
